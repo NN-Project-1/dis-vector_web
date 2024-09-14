@@ -1,87 +1,131 @@
-/* css/style.css */
+/* Global styling */
+
+
 
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    background-color: #f0f0f0; /* Light background color for contrast */
-}
-
-header {
-    background-color: #353535;
-    padding: 15px;
+    font-family: 'Arial', sans-serif;
     text-align: center;
-    color: white;
 }
 
-h1 {
+/* Header styling */
+header {
+    background-color: #636363;
+    color: white;
+    padding: 15px; /* Reduced padding */
+    font-family: 'Arial', sans-serif;
+}
+
+header h1 {
+    font-size: 1.8em; /* Reduced font size */
+    line-height: 1.2;
     margin: 0;
-    font-size: 1.8em; /* Larger font size for prominence */
-    font-weight: bold; /* Bold text for emphasis */
-    color: #ffffff; /* White text color */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* Subtle shadow for text standout */
-    letter-spacing: 1.5px; /* Spacing between letters for elegance */
-    line-height: 1.2; /* Improved readability */
-    font-family: 'Arial Black', Arial, sans-serif; /* Bold, eye-catching font */
-    text-transform: uppercase; /* Uppercase text for emphasis */
-    background: linear-gradient(135deg, #6e8efb, #a777e3); /* Modern gradient background */
-    -webkit-background-clip: text; /* Clips the gradient background to text (WebKit browsers) */
-    background-clip: text; /* Clips the gradient background to text */
+    padding: 0;
 }
 
 h2 {
-    margin: 20px 0 10px;
-    font-size: 1.4em;
-    color: #333;
+    color: #5e5e5e;
+    font-size: 1.2em; /* Reduced h2 font size */
 }
 
-h3 {
-    margin: 10px 0;
-    font-size: 1.1em;
-    color: #555;
+
+.grid-container .grid-item:nth-child(5n+1) audio,
+.grid-container .grid-item:nth-child(5n+5) audio {
+    width: 120px;  /* Reduced width for 1st and 5th columns */
+    height: 25px;  /* Reduced height for 1st and 5th columns */
 }
 
-p {
-    margin: 0;
-    color: #666;
-}
 
-main {
-    padding: 20px;
-}
 
+/* Flexbox for the grid container */
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns for uniformity */
-    gap: 10px; /* Gap between grid items */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjusted gap to fit 5 items per row */
+    justify-content: center;
 }
 
 .grid-item {
-    background: rgba(255, 255, 255, 0.8); /* Glass effect background with improved opacity */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Reduced border size */
-    border-radius: 8px; /* Slightly smaller border radius */
-    padding: 10px; /* Reduced padding */
+    flex: 1 1 calc(20% - 10px); /* 5 items per row */
+    min-width: 150px; /* Minimum width of each item */
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
     text-align: center;
-    backdrop-filter: blur(8px); /* Slightly reduced blur for glass effect */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Reduced shadow for a subtler effect */
 }
 
+.grid-item:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-3px); /* Reduced hover effect */
+}
 
+/* Conversion grid styling */
+.conversion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px; /* Reduced gap */
+}
+
+.conversion-item {
+    padding: 3px; /* Reduced padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    text-align: center;
+}
+
+.conversion-item:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+/* Audio control styling */
 audio {
-    width: 100%;
-    max-width: 100%; /* Ensures the audio player uses the full width of its container */
-    margin: 10px auto;
+    width: 90%; /* Reduced width to make audio controls more compact */
+    height: 24px; /* Slightly reduced height */
 }
 
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust grid for smaller screens */
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    .grid-item {
+        flex: 1 1 calc(25% - 10px); /* 4 items per row */
     }
 }
 
-@media (max-width: 480px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* Single column layout on very small screens */
+@media (max-width: 800px) {
+    .grid-item {
+        flex: 1 1 calc(50% - 10px); /* 2 items per row */
     }
+}
+
+@media (max-width: 500px) {
+    .grid-item {
+        flex: 1 1 100%; /* 1 item per row */
+    }
+}
+
+/* Compact list styling */
+.compact-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.compact-list ul li {
+    margin-bottom: 3px; /* Reduced space between list items */
+}
+
+.compact-list audio {
+    width: 130px; /* Further reduced width of audio controls */
+    height: 20px; /* Further reduced height */
+}
+
+.compact-list h4 {
+    font-size: 12px; /* Reduced font size */
+    margin: 0;
+    padding-bottom: 1px; /* Less space below header */
 }
